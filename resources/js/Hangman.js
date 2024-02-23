@@ -6,6 +6,7 @@ class Hangman {
 
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext(`2d`);
+    this.wrongGuessCount = 0;
   }
 
   /**
@@ -32,7 +33,7 @@ class Hangman {
    */
   start(difficulty, next) {
     // Get word and set it to the class's this.word
-    getRandomWord(difficulty, (word) => {
+    this.getRandomWord(difficulty, (word) => {
       this.word = word;
       // Clear canvas
       this.clearCanvas();
