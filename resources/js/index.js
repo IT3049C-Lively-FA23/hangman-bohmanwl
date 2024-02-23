@@ -1,3 +1,5 @@
+const { rest } = require("lodash");
+
 // START + DIFFICULTY SELECTION
 const startWrapper = document.getElementById(`startWrapper`);
 const difficultySelectForm = document.getElementById(`difficultySelect`);
@@ -41,19 +43,41 @@ try {
     });
 
   // add a submit Event Listener to the guessForm
+  guessForm.addEventListener(`submit`, function (e) {
+    e.preventDefault();
   //    get the guess input
+    const guessInput = document.querySelector('#guessInput').ariaValueMax;
   //    call the game guess() method
+    try{
+        game.guess(guessInput);
   //    set the wordHolderText to the game.getHolderText
+        wordHolderText.textContent = game.getWordHolderText();
   //    set the guessesText to the game.getGuessesText
+        guessesText.textContent = game.getGuessesText();
   //    clear the guess input field
+        guessInput.value = '';
   // Given the Guess Function calls either the checkWin or the onWrongGuess methods
   // the value of the isOver and didWin would change after calling the guess() function.
   // Check if the game isOver:
+      if(game.isOver){
   //      1. disable the guessInput
+        guessInput.disabled = true;
   //      2. disable the guessButton
+        guessButton.disabled = true;
   //      3. show the resetGame button
+        resetGame.style.display = 'block';
   // if the game is won or lost, show an alert.
-  guessForm.addEventListener(`submit`, function (e) {});
+        if (game.didWin) {
+          alert('Youve won!');
+        }else{
+          alert('You Lost! The word was: ' + game.word);
+        }
+      }
+    }catch (error){
+      console.error(error);
+      alert(error.message);
+    }
+  });  
 
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
