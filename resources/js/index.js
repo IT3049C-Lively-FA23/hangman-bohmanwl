@@ -25,33 +25,32 @@ difficultySelectForm.addEventListener(`submit`, function (event) {
 // add a submit Event Listener to the guessForm
 guessForm.addEventListener(`submit`, function (e) {
   e.preventDefault();
-  // get the guess input value
-  const guessInputValue = guessInput.value;
-  // call the game guess() method
+  // Get the guess input value
+  const guessValue = guessInput.value;
+  // Call the game guess() method with the input value
   try {
-    game.guess(guessInputValue);
-    // set the wordHolderText to the game.getHolderText
+    game.guess(guessValue);
+    // Update the wordHolderText and guessesText
     wordHolderText.textContent = game.getWordHolderText();
-    // set the guessesText to the game.getGuessesText
     guessesText.textContent = game.getGuessesText();
-    // clear the guess input field
+    // Clear the guess input field
     guessInput.value = '';
-    // Check if the game isOver:
+    // Check if the game is over
     if (game.isOver) {
-      // 1. disable the guessInput
+      // Disable the guess input and button
       guessInput.disabled = true;
-      // 2. disable the guessButton
-      guessSubmitButton.disabled = true;
-      // 3. show the resetGame button
+      guessButton.disabled = true;
+      // Show the resetGame button
       resetGame.style.display = 'block';
-      // if the game is won or lost, show an alert.
+      // Show a message based on the game result
       if (game.didWin) {
-        alert('Youve won!');
+        alert('Congratulations! You won!');
       } else {
-        alert('You Lost! The word was: ' + game.word);
+        alert('Game over! The word was: ' + game.word);
       }
     }
   } catch (error) {
+    // Handle errors
     console.error(error);
     alert(error.message);
   }
