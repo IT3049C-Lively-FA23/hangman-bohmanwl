@@ -80,9 +80,13 @@ try {
   });  
 
   // add a click Event Listener to the resetGame button
+  resetGame.addEventListener(`click`, function (e) {
+    game.reset();
   //    show the startWrapper
+    startWrapper.style.display = 'block';
   //    hide the gameWrapper
-  resetGame.addEventListener(`click`, function (e) {});
+    gameWrapper.style.display = 'none';
+});
 } catch (error) {
   console.error(error);
   alert(error);
