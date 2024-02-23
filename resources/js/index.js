@@ -29,7 +29,7 @@ try {
     event.preventDefault(); // Prevent default form submission behavior
 
     // Get the difficulty input
-    const difficulty = document.querySelector('#difficultyInput').value;
+    const difficulty = difficultySelect.value;
 
     // Call the game start() method
     game.start(difficulty, function () {
@@ -49,7 +49,7 @@ try {
   guessForm.addEventListener(`submit`, function (e) {
     e.preventDefault();
   //    get the guess input
-    const guessInput = document.querySelector('#guessInput').ariaValueMax;
+    const guessInput = guessInput.value;
   //    call the game guess() method
     try{
         game.guess(guessInput);
@@ -84,7 +84,7 @@ try {
 
   // add a click Event Listener to the resetGame button
   resetGame.addEventListener(`click`, function (e) {
-    game.reset();
+    game.resetGame();
   //    show the startWrapper
     startWrapper.style.display = 'block';
   //    hide the gameWrapper
