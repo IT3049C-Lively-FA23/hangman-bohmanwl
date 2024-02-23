@@ -35,9 +35,9 @@ class Hangman {
     getRandomWord(difficulty, (word) => {
       this.word = word;
       // Clear canvas
-      clearCanvas();
+      this.clearCanvas();
       // Draw base
-      drawBase();
+      this.drawBase();
       // Reset this.guesses to an empty array
       this.guesses = [];
       // Reset this.isOver to false
@@ -94,7 +94,7 @@ class Hangman {
     // if zero, set both didWin, and isOver to true
       if (remainingUnknowns === 0){
         this.didWin = true;
-        this.isOver - true;
+        this.isOver = true;
       }
   }
 
